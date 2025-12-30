@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/v0a1922:path*",
+      "destination": "https://api.cloudflareclient.com/v0a1922:path*"
+    },
+    {
+      "source": "/v0i1909051800:path*",
+      "destination": "https://api.cloudflareclient.com/v0i1909051800:path*"
+    }
+  ]
+}
