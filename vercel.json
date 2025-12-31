@@ -2,12 +2,30 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "source": "/v0a1922:path*",
-      "destination": "https://api.cloudflareclient.com/v0a1922:path*"
+      "source": "/(.*)",
+      "destination": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "Access-Control-Request-Method",
+          "value": { "neq": "" }
+        }
+      ]
     },
     {
-      "source": "/v0i1909051800:path*",
-      "destination": "https://api.cloudflareclient.com/v0i1909051800:path*"
+      "source": "/:v(v0\\w\\d+)/:path*",
+      "destination": "https://api.cloudflareclient.com/:v/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "*" },
+        { "key": "Access-Control-Allow-Headers", "value": "*" },
+        { "key": "Access-Control-Allow-Credentials", "value": "true" }
+      ]
     }
   ]
 }
